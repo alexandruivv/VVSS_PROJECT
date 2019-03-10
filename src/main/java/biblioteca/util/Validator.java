@@ -20,6 +20,8 @@ public class Validator {
 		}
 		if(!isOKString(c.getTitlu()))
 			throw new Exception("Titlu invalid!");
+		if(!isOKString(c.getEditura()))
+			throw new Exception("Editura invalida!");
 		for(String s:c.getReferenti()){
 			if(!isOKString(s))
 				throw new Exception("Autor invalid!");

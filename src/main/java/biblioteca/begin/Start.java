@@ -18,11 +18,11 @@ import java.io.IOException;
 public class Start {
 	
 	public static void main(String[] args) {
-		CartiRepoInterface cr = new CartiRepoMock();
+		CartiRepoInterface cr = new CartiRepo();
 		BibliotecaCtrl bc = new BibliotecaCtrl(cr);
-		Consola c = new Consola(bc);
+		Consola console = new Consola(bc);
 		try {
-			c.executa();
+			console.executa();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -30,7 +30,7 @@ public class Start {
 	}
 	
 //	CartiRepoInterface cr = new CartiRepo();
-//	BibliotecaCtrl bc = new BibliotecaCtrl(cr);
+//	BibliotecaCtrl bc = new BibliotecaCtrl(cr	);
 //	
 //	Carte c = new Carte();
 //	bc = new BibliotecaCtrl(cr);

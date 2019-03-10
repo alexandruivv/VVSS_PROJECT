@@ -15,17 +15,17 @@ public class BibliotecaCtrl {
 		this.cr = cr;
 	}
 	
-	public void adaugaCarte(Carte c) throws Exception{
-		Validator.validateCarte(c);
-		cr.adaugaCarte(c);
+	public void adaugaCarte(Carte carte) throws Exception{
+		Validator.validateCarte(carte);
+		cr.adaugaCarte(carte);
 	}
 	
 	public void modificaCarte(Carte nou, Carte vechi) throws Exception{
 		cr.modificaCarte(nou, vechi);
 	}
 	
-	public void stergeCarte(Carte c) throws Exception{
-		cr.stergeCarte(c);
+	public void stergeCarte(Carte carte) throws Exception{
+		cr.stergeCarte(carte);
 	}
 
 	public List<Carte> cautaCarte(String autor) throws Exception{

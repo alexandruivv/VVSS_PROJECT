@@ -10,12 +10,14 @@ public class Carte {
 	private List<String> referenti;
 	private String anAparitie;
 	private List<String> cuvinteCheie;
+	private String editura;
 	
 	public Carte(){
 		titlu = "";
 		referenti = new ArrayList<String>();
 		anAparitie = "";
 		cuvinteCheie = new ArrayList<String>();
+		editura = "";
 	}
 
 	public String getTitlu() {
@@ -49,7 +51,14 @@ public class Carte {
 	public void setCuvinteCheie(List<String> cuvinteCheie) {
 		this.cuvinteCheie = cuvinteCheie;
 	}
-	
+
+	public String getEditura() {
+		return editura;
+	}
+
+	public void setEditura(String editura) {
+		this.editura = editura;
+	}
 
 	public void deleteCuvantCheie(String cuvant){
 			for(int i=0;i<cuvinteCheie.size();i++){
@@ -82,9 +91,9 @@ public class Carte {
 	}
 	
 	public boolean cautaDupaCuvinteCheie(List<String> cuvinte){
-		for(String c:cuvinteCheie){
+		for(String cuvExistent:cuvinteCheie){
 			for(String cuv:cuvinte){
-				if(c.equals(cuv))
+				if(cuvExistent.equals(cuv))
 					return true;
 			}
 		}
@@ -92,8 +101,8 @@ public class Carte {
 	}
 	 
 	public boolean cautaDupaAutor(String autor){
-		for(String a:referenti){
-			if(a.contains(autor))
+		for(String autorExistent:referenti){
+			if(autorExistent.contains(autor))
 				return true;
 		}
 		return false;
@@ -118,25 +127,26 @@ public class Carte {
 				cuvCheie+=cuvinteCheie.get(i)+",";
 		}
 		
-		return titlu+";"+ref+";"+anAparitie+";"+cuvCheie;
+		return titlu+";"+ref+";"+anAparitie+";"+editura+";"+cuvCheie;
 	}
 	
-	public static Carte getCarteFromString(String carte){
-		Carte c = new Carte();
-		String []atr = carte.split(";");
+	public static Carte getCarteFromString(String carteString){
+		Carte carte = new Carte();
+		String []atr = carteString.split(";");
 		String []referenti = atr[1].split(",");
 		String []cuvCheie = atr[4].split(",");
-		
-		c.titlu=atr[0];
+
+		carte.titlu=atr[0];
 		for(String s:referenti){
-			c.adaugaReferent(s);
+			carte.adaugaReferent(s);
 		}
-		c.anAparitie = atr[2];
+		carte.anAparitie = atr[2];
 		for(String s:cuvCheie){
-			c.adaugaCuvantCheie(s);
+			carte.adaugaCuvantCheie(s);
 		}
+		carte.editura = atr[3];
 		
-		return c;
+		return carte;
 	}
 	
 }

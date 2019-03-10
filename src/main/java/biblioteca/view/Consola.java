@@ -55,24 +55,27 @@ public class Consola {
 		System.out.println("     1. Adaugarea unei noi carti");
 		System.out.println("     2. Cautarea cartilor scrise de un anumit autor");
 		System.out.println("     3. Afisarea cartilor din biblioteca care au aparut intr-un anumit an, ordonate alfabetic dupa titlu si autori");
-		System.out.println("     4. Afisarea toturor cartilor");
+		System.out.println("     4. Afisarea tuturor cartilor");
 		System.out.println("     0. Exit");
 	}
 	
 	public void adauga(){
-		Carte c = new Carte();
+		Carte carte = new Carte();
 		try{
 			System.out.println("\n\n\n");
 			
 			System.out.println("Titlu:");
-			c.setTitlu(console.readLine());
+			carte.setTitlu(console.readLine());
+
+			System.out.println("Editura:");
+			carte.setEditura(console.readLine());
 			
 			String line;
 			do{
 				System.out.println("An aparitie:");
 				line=console.readLine();
 			}while(!line.matches("[10-9]+"));
-			c.setAnAparitie(line);
+			carte.setAnAparitie(line);
 			
 			do{
 				System.out.println("Nr. de referent:");
@@ -81,7 +84,7 @@ public class Consola {
 			int nrReferenti= Integer.parseInt(line);
 			for(int i=1;i<=nrReferenti;i++){
 				System.out.println("Autor "+i+": ");
-				c.adaugaReferent(console.readLine());
+				carte.adaugaReferent(console.readLine());
 			}
 			
 			do{
@@ -91,10 +94,10 @@ public class Consola {
 			int nrCuv= Integer.parseInt(line);
 			for(int i=1;i<=nrCuv;i++){
 				System.out.println("Cuvant "+i+": ");
-				c.adaugaCuvantCheie(console.readLine());
+				carte.adaugaCuvantCheie(console.readLine());
 			}
 			
-			bc.adaugaCarte(c);
+			bc.adaugaCarte(carte);
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -104,8 +107,8 @@ public class Consola {
 	public void afiseazaToateCartile(){
 		System.out.println("\n\n\n");
 		try {
-			for(Carte c:bc.getCarti())
-				System.out.println(c);
+			for(Carte carte:bc.getCarti())
+				System.out.println(carte);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -137,8 +140,8 @@ public class Consola {
 				System.out.println("An aparitie:");
 				line=console.readLine();
 			}while(!line.matches("[10-9]+"));
-			for(Carte c:bc.getCartiOrdonateDinAnul(line)){
-				System.out.println(c);
+			for(Carte carte:bc.getCartiOrdonateDinAnul(line)){
+				System.out.println(carte);
 			}
 		}catch(Exception e){
 			e.printStackTrace();

@@ -13,11 +13,15 @@ import java.util.List;
 
 public class CartiRepo implements CartiRepoInterface {
 	
-	private String file = "out/cartiBD.txt";
+	private String file = "cartiBD.txt";
 	
 	public CartiRepo(){
-		URL location = CartiRepo.class.getProtectionDomain().getCodeSource().getLocation();
-        System.out.println(location.getFile());
+		File yourFile = new File(file);
+		try {
+			yourFile.createNewFile(); // if file already exists will do nothing
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
@@ -72,9 +76,9 @@ public class CartiRepo implements CartiRepoInterface {
 		List<Carte> carti = getCarti();
 		List<Carte> cartiGasite = new ArrayList<Carte>();
 		int i=0;
-		while (i<=carti.size()){
+		while (i<carti.size()){
 			boolean flag = false;
-			List<String> lref = carti.get(i).getCuvinteCheie();
+			List<String> lref = carti.get(i).getReferenti();
 			int j = 0;
 			while(j<lref.size()){
 				if(lref.get(j).toLowerCase().contains(ref.toLowerCase())){
@@ -96,7 +100,7 @@ public class CartiRepo implements CartiRepoInterface {
 		List<Carte> lc = getCarti();
 		List<Carte> lca = new ArrayList<Carte>();
 		for(Carte c:lc){
-			if(c.getAnAparitie().equals(an) == false){
+			if(c.getAnAparitie().equals(an) == true){
 				lca.add(c);
 			}
 		}
