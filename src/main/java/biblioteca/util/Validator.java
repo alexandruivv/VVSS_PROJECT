@@ -31,7 +31,10 @@ public class Validator {
 				throw new Exception("Cuvant cheie invalid!");
 		}
 		if(!Validator.isNumber(c.getAnAparitie()))
-			throw new Exception("Editura invalid!");
+			throw new Exception("An aparitie invalid!");
+		if(Integer.parseInt(c.getAnAparitie()) <= 1600 || Integer.parseInt(c.getAnAparitie()) >= 2025) {
+			throw new Exception("An aparitie invalid!");
+		}
 	}
 	
 	public static boolean isNumber(String s){
@@ -48,7 +51,10 @@ public class Validator {
 			}
 			return false;
 		}
-		return s.matches("[a-zA-Z]+");
+		if(s.length() > 255) {
+			return false;
+		}
+		return s.matches("[a-zA-Z,:. ]+");
 	}
 	
 }
