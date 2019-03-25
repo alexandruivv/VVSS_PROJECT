@@ -36,7 +36,7 @@ public class CartiRepoTest {
     }
 
     @Test
-    public void adaugaCarte2() throws Exception {
+    public void adaugaCarte2(){
         Carte carte = new Carte();
         carte.setTitlu("");
         carte.setAnAparitie("1992");
@@ -45,12 +45,12 @@ public class CartiRepoTest {
         try {
             ctrl.adaugaCarte(carte);
         } catch (Exception e) {
-            throw e;
         }
+        assertEquals(6, cartiRepo.getCarti().size());
     }
 
     @Test
-    public void adaugaCarte3() throws Exception {
+    public void adaugaCarte3()  {
         Carte carte = new Carte();
         carte.setTitlu("The classic children’s book uses a spectacular image to grab people’s attention:" +
                 " Could you imagine looking up in the sky and seeing meatballs beginning to rain down? " +
@@ -62,12 +62,12 @@ public class CartiRepoTest {
         try {
             ctrl.adaugaCarte(carte);
         } catch (Exception e) {
-            throw e;
         }
+        assertEquals(6, cartiRepo.getCarti().size());
     }
 
     @Test
-    public void adaugaCarte4() throws Exception {
+    public void adaugaCarte4() {
         Carte carte = new Carte();
         carte.setTitlu("The classic childrens book uses a spectacular image to grab peoples attention: Could you imagine looking up in the sky and seeing meatballs " +
                 "beginning to rain down " +
@@ -78,13 +78,12 @@ public class CartiRepoTest {
         try {
             ctrl.adaugaCarte(carte);
         } catch (Exception e) {
-            throw e;
         }
         assertEquals(7, cartiRepo.getCarti().size());
     }
 
     @Test
-    public void adaugaCarte5() throws Exception {
+    public void adaugaCarte5() {
         Carte carte = new Carte();
         carte.setTitlu("The classic childrens book uses a spectacular image to grab peoples attention: Could you imagine looking up in the sky and seeing meatballs " +
                 "beginning to rain down " +
@@ -95,13 +94,12 @@ public class CartiRepoTest {
         try {
             ctrl.adaugaCarte(carte);
         } catch (Exception e) {
-            throw e;
         }
         assertEquals(7, cartiRepo.getCarti().size());
     }
 
     @Test
-    public void adaugaCarte6() throws Exception {
+    public void adaugaCarte6()  {
         Carte carte = new Carte();
         carte.setTitlu("Enigma Otiliei");
         carte.setAnAparitie("1600");
@@ -110,12 +108,12 @@ public class CartiRepoTest {
         try {
             ctrl.adaugaCarte(carte);
         } catch (Exception e) {
-            throw e;
         }
+        assertEquals(6, cartiRepo.getCarti().size());
     }
 
     @Test
-    public void adaugaCarte7() throws Exception {
+    public void adaugaCarte7() {
         Carte carte = new Carte();
         carte.setTitlu("Moara cu noroc");
         carte.setAnAparitie("2025");
@@ -124,12 +122,12 @@ public class CartiRepoTest {
         try {
             ctrl.adaugaCarte(carte);
         } catch (Exception e) {
-            throw e;
         }
+        assertEquals(6, cartiRepo.getCarti().size());
     }
 
     @Test
-    public void adaugaCarte8() throws Exception {
+    public void adaugaCarte8() {
         Carte carte = new Carte();
         carte.setTitlu("Aasdzxcqwe");
         carte.setAnAparitie("2016");
@@ -138,7 +136,6 @@ public class CartiRepoTest {
         try {
             ctrl.adaugaCarte(carte);
         } catch (Exception e) {
-            throw e;
         }
         assertEquals(7, cartiRepo.getCarti().size());
     }
