@@ -1,6 +1,7 @@
 package biblioteca.repository.repo;
 
 
+import biblioteca.exceptions.InvalidValueException;
 import biblioteca.model.Carte;
 import biblioteca.repository.repoInterfaces.CartiRepoInterface;
 
@@ -72,27 +73,35 @@ public class CartiRepo implements CartiRepoInterface {
 	}
 
 	@Override
-	public List<Carte> cautaCarte(String ref) {
-		List<Carte> carti = getCarti();
+	public List<Carte> cautaCarte(String ref) throws InvalidValueException {
 		List<Carte> cartiGasite = new ArrayList<Carte>();
+		if(ref.equals("")) {
+			throw new InvalidValueException("Autorul nu poate fi null !");
+		}
+		List<Carte> carti = getCarti();
 		int i=0;
 		while (i<carti.size()){
-			boolean flag = false;
 			List<String> lref = carti.get(i).getReferenti();
-			int j = 0;
-			while(j<lref.size()){
-				if(lref.get(j).toLowerCase().contains(ref.toLowerCase())){
-					flag = true;
-					break;
+			if(!lref.isEmpty()) {
+				boolean flag = autorWroteBook(lref, ref);
+				if(flag){
+					cartiGasite.add(carti.get(i));
 				}
-				j++;
-			}
-			if(flag == true){
-				cartiGasite.add(carti.get(i));
 			}
 			i++;
 		}
 		return cartiGasite;
+	}
+
+	public boolean autorWroteBook(List<String> autori, String autor) {
+		int j = 0;
+		while(j<autori.size()){
+			if(autori.get(j).toLowerCase().contains(autor.toLowerCase())){
+				return true;
+			}
+			j++;
+		}
+		return false;
 	}
 
 	@Override
