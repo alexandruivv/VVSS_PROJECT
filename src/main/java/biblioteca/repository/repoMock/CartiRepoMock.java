@@ -4,6 +4,7 @@ package biblioteca.repository.repoMock;
 import biblioteca.exceptions.InvalidValueException;
 import biblioteca.model.Carte;
 import biblioteca.repository.repoInterfaces.CartiRepoInterface;
+import biblioteca.util.Validator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,12 +28,14 @@ public class CartiRepoMock implements CartiRepoInterface {
 	}
 	
 	@Override
-	public void adaugaCarte(Carte c) {
+	public void adaugaCarte(Carte c) throws Exception {
+		Validator.validateCarte(c);
 		carti.add(c);
 	}
 
 	@Override
-	public List<Carte> cautaCarte(String ref) throws InvalidValueException {
+	public List<Carte> cautaCarte(String ref) throws Exception {
+		Validator.isStringOK(ref);
 		List<Carte> cartiGasite = new ArrayList<Carte>();
 		if(ref.equals("")) {
 			throw new InvalidValueException("Autorul nu poate fi null !");
@@ -81,7 +84,9 @@ public class CartiRepoMock implements CartiRepoInterface {
 	}
 
 	@Override
-	public List<Carte> getCartiOrdonateDinAnul(String an) {
+	public List<Carte> getCartiOrdonateDinAnul(String an) throws Exception {
+		if(!Validator.isNumber(an))
+			throw new Exception("Nu e numar!");
 		List<Carte> lc = getCarti();
 		List<Carte> lca = new ArrayList<Carte>();
 		for(Carte c:lc){

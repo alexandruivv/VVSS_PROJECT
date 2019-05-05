@@ -11,13 +11,11 @@ import static org.junit.Assert.*;
 
 public class CartiRepoTest {
 
-    private BibliotecaCtrl ctrl;
     private CartiRepoMock cartiRepo;
 
     @Before
     public void init() {
         cartiRepo = new CartiRepoMock();
-        ctrl = new BibliotecaCtrl(cartiRepo);
     }
 
     @Test
@@ -28,7 +26,7 @@ public class CartiRepoTest {
 
         carte.setEditura("sds");
         try {
-            ctrl.adaugaCarte(carte);
+            cartiRepo.adaugaCarte(carte);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -43,7 +41,7 @@ public class CartiRepoTest {
 
         carte.setEditura("sds");
         try {
-            ctrl.adaugaCarte(carte);
+            cartiRepo.adaugaCarte(carte);
         } catch (Exception e) {
         }
         assertEquals(6, cartiRepo.getCarti().size());
@@ -60,7 +58,7 @@ public class CartiRepoTest {
 
         carte.setEditura("sds");
         try {
-            ctrl.adaugaCarte(carte);
+            cartiRepo.adaugaCarte(carte);
         } catch (Exception e) {
         }
         assertEquals(6, cartiRepo.getCarti().size());
@@ -76,7 +74,7 @@ public class CartiRepoTest {
 
         carte.setEditura("sds");
         try {
-            ctrl.adaugaCarte(carte);
+            cartiRepo.adaugaCarte(carte);
         } catch (Exception e) {
         }
         assertEquals(7, cartiRepo.getCarti().size());
@@ -92,7 +90,7 @@ public class CartiRepoTest {
 
         carte.setEditura("sds");
         try {
-            ctrl.adaugaCarte(carte);
+            cartiRepo.adaugaCarte(carte);
         } catch (Exception e) {
         }
         assertEquals(7, cartiRepo.getCarti().size());
@@ -106,7 +104,7 @@ public class CartiRepoTest {
 
         carte.setEditura("sds");
         try {
-            ctrl.adaugaCarte(carte);
+            cartiRepo.adaugaCarte(carte);
         } catch (Exception e) {
         }
         assertEquals(6, cartiRepo.getCarti().size());
@@ -120,7 +118,7 @@ public class CartiRepoTest {
 
         carte.setEditura("sds");
         try {
-            ctrl.adaugaCarte(carte);
+            cartiRepo.adaugaCarte(carte);
         } catch (Exception e) {
         }
         assertEquals(6, cartiRepo.getCarti().size());
@@ -134,7 +132,7 @@ public class CartiRepoTest {
 
         carte.setEditura("sds");
         try {
-            ctrl.adaugaCarte(carte);
+            cartiRepo.adaugaCarte(carte);
         } catch (Exception e) {
         }
         assertEquals(7, cartiRepo.getCarti().size());

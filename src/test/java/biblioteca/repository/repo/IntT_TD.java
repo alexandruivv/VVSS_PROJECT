@@ -1,7 +1,6 @@
 package biblioteca.repository.repo;
 
 import biblioteca.control.BibliotecaCtrl;
-import biblioteca.exceptions.InvalidValueException;
 import biblioteca.model.Carte;
 import biblioteca.repository.repoMock.CartiRepoMock;
 import org.junit.Before;
@@ -13,7 +12,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-public class IntT_BB {
+public class IntT_TD {
     private BibliotecaCtrl bibliotecaCtrl;
     private CartiRepoMock cartiRepoMock;
 
@@ -70,7 +69,40 @@ public class IntT_BB {
     }
 
     @Test
-    public void testDeIntegritate() {
+    public void testIntegrareA() {
+        Carte carte = new Carte();
+        carte.setTitlu("Ion");
+        carte.setAnAparitie("1948");
+        carte.setReferenti(Arrays.asList("Liviu Rebreanu"));
+        carte.setEditura("sds");
+
+        try {
+            bibliotecaCtrl.adaugaCarte(carte);
+            assertEquals(bibliotecaCtrl.getCarti().size(), 7);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void testIntegrareAB() {
+        Carte carte = new Carte();
+        carte.setTitlu("Ion");
+        carte.setAnAparitie("1948");
+        carte.setReferenti(Arrays.asList("Liviu Rebreanu"));
+        carte.setEditura("sds");
+
+        try {
+            bibliotecaCtrl.adaugaCarte(carte);
+            List<Carte> carti = bibliotecaCtrl.cautaCarte("Liviu Rebreanu");
+            assertEquals(carti.size(), 1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void testIntegrareABC() {
         Carte carte = new Carte();
         carte.setTitlu("Ion");
         carte.setAnAparitie("1948");

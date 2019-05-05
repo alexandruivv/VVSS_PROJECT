@@ -16,7 +16,6 @@ public class BibliotecaCtrl {
 	}
 	
 	public void adaugaCarte(Carte carte) throws Exception{
-		Validator.validateCarte(carte);
 		cr.adaugaCarte(carte);
 	}
 	
@@ -29,7 +28,6 @@ public class BibliotecaCtrl {
 	}
 
 	public List<Carte> cautaCarte(String autor) throws Exception{
-		Validator.isStringOK(autor);
 		return cr.cautaCarte(autor);
 	}
 	
@@ -38,8 +36,6 @@ public class BibliotecaCtrl {
 	}
 	
 	public List<Carte> getCartiOrdonateDinAnul(String an) throws Exception{
-		if(!Validator.isNumber(an))
-			throw new Exception("Nu e numar!");
 		return cr.getCartiOrdonateDinAnul(an);
 	}
 	

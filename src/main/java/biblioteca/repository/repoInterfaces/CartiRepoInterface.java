@@ -7,10 +7,10 @@ import biblioteca.model.Carte;
 import java.util.List;
 
 public interface CartiRepoInterface {
-	void adaugaCarte(Carte c);
+	void adaugaCarte(Carte c) throws Exception;
 	void modificaCarte(Carte nou, Carte vechi);
 	void stergeCarte(Carte c);
-	List<Carte> cautaCarte(String ref) throws InvalidValueException;
+	List<Carte> cautaCarte(String ref) throws Exception;
 	List<Carte> getCarti();
-	List<Carte> getCartiOrdonateDinAnul(String an);
+	List<Carte> getCartiOrdonateDinAnul(String an) throws Exception;
 }
